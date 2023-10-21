@@ -11,6 +11,8 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\CharacteristicsTable&\Cake\ORM\Association\BelongsToMany $Characteristics
+ *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\User[] newEntities(array $data, array $options = [])
@@ -44,6 +46,12 @@ class UsersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->belongsToMany('Characteristics', [
+            'foreignKey' => 'user_id',
+            'targetForeignKey' => 'characteristic_id',
+            'joinTable' => 'characteristics_users',
+        ]);
     }
 
     /**

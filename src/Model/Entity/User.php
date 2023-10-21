@@ -12,6 +12,8 @@ use Cake\ORM\Entity;
  * @property string $name
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
+ *
+ * @property \App\Model\Entity\Characteristic[] $characteristics
  */
 class User extends Entity
 {
@@ -28,5 +30,6 @@ class User extends Entity
         'name' => true,
         'created' => true,
         'modified' => true,
+        'characteristics' => true,
     ];
 }

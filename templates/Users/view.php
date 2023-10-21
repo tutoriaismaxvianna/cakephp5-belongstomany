@@ -35,6 +35,35 @@
                     <td><?= h($user->modified) ?></td>
                 </tr>
             </table>
+            <div class="related">
+                <h4><?= __('Related Characteristics') ?></h4>
+                <?php if (!empty($user->characteristics)) : ?>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Characteristic') ?></th>
+                            <th><?= __('Created') ?></th>
+                            <th><?= __('Modified') ?></th>
+                            <th class="actions"><?= __('Actions') ?></th>
+                        </tr>
+                        <?php foreach ($user->characteristics as $characteristics) : ?>
+                        <tr>
+                            <td><?= h($characteristics->id) ?></td>
+                            <td><?= h($characteristics->characteristic) ?></td>
+                            <td><?= h($characteristics->created) ?></td>
+                            <td><?= h($characteristics->modified) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['controller' => 'Characteristics', 'action' => 'view', $characteristics->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['controller' => 'Characteristics', 'action' => 'edit', $characteristics->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Characteristics', 'action' => 'delete', $characteristics->id], ['confirm' => __('Are you sure you want to delete # {0}?', $characteristics->id)]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

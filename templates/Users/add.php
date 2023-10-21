@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var \Cake\Collection\CollectionInterface|string[] $characteristics
  */
 ?>
 <div class="row">
@@ -18,7 +19,19 @@
                 <legend><?= __('Add User') ?></legend>
                 <?php
                     echo $this->Form->control('name');
+                    debug($characteristics->count());
+                    if ($characteristics->count() > 0) {
+                        echo $this->Form->control('characteristics._ids', [
+                            'options' => $characteristics,
+                            'type' => 'select',
+                            'multiple' => 'checkbox',
+                            'label' => 'Assuntos'
+                            ]);
+                    }  else {
                 ?>
+                    <label for="">Assuntos</label> 
+                    <p>Sem opões cadastradas</p>  
+                <?php } ?>                  
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>

@@ -2,6 +2,7 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var string[]|\Cake\Collection\CollectionInterface $characteristics
  */
 ?>
 <div class="row">
@@ -23,6 +24,12 @@
                 <legend><?= __('Edit User') ?></legend>
                 <?php
                     echo $this->Form->control('name');
+                    echo $this->Form->control('characteristics._ids', [
+                        'options' => $characteristics,
+                        'type' => 'select',
+                        'multiple' => 'checkbox',
+                        'label' => 'Assuntos'
+                        ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
