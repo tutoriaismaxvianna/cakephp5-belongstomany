@@ -25,7 +25,8 @@ class CharacteristicsUser extends Entity
      *
      * @var array<string, bool>
      */
-    protected array $_accessible = [
+    protected array $_accessible = [        
+        'id' => true,
         'characteristic_id' => true,
         'user_id' => true,
         'characteristic' => true,
